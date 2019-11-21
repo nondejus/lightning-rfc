@@ -57,7 +57,7 @@ The messages are grouped logically into five groups, ordered by the most signifi
   - Channel (types `32`-`127`): messages used to setup and tear down micropayment channels (described in [BOLT #2](02-peer-protocol.md))
   - Commitment (types `128`-`255`): messages related to updating the current commitment transaction, which includes adding, revoking, and settling HTLCs as well as updating fees and exchanging signatures (described in [BOLT #2](02-peer-protocol.md))
   - Routing (types `256`-`511`): messages containing node and channel announcements, as well as any active route exploration (described in [BOLT #7](07-routing-gossip.md))
-  - Custom (types `32768-65535`): experimental and application-specific messages
+  - Custom (types `32768`-`65535`): experimental and application-specific messages
 
 The size of the message is required by the transport layer to fit into a 2-byte unsigned int; therefore, the maximum possible size is 65535 bytes.
 
@@ -68,11 +68,11 @@ A node:
   - that negotiates an option in this specification:
     - MUST include all the fields annotated with that option.
   - When defining custom messages:
-   - SHOULD pick a random `type` to avoid collision with other custom types.
-   - SHOULD pick an odd `type` identifiers when regular nodes should ignore the
-     additional data.
-   - SHOULD pick an even `type` identifiers when regular nodes should reject
-     the message and close the connection.
+    - SHOULD pick a random `type` to avoid collision with other custom types.
+    - SHOULD pick an odd `type` identifiers when regular nodes should ignore the
+      additional data.
+    - SHOULD pick an even `type` identifiers when regular nodes should reject
+      the message and close the connection.
 
 ### Rationale
 
